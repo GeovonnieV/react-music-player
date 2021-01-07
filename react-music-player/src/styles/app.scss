@@ -1,8 +1,9 @@
+// style in here pertains to all components
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+// importing the sub styles 
 @import "./song";
 @import "./player";
