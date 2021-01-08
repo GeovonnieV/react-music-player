@@ -4,13 +4,24 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // grabs the fonts we want to use 
 import {faPlay, faAngleLeft,faAngleRight} from "@fortawesome/free-solid-svg-icons"
 
-const Player = ({currentSong}) => {
+const Player = ({currentSong, isPlaying, setIsPlaying}) => {
     // useRef selects a specific html tag like querySelector in js does
     const audioRef = useRef(null)
 
     // Event Handlers
     const playSongHandler = () => {
-        audioRef.current.play()
+        // if the song is playing pause it when we click btn
+        if(isPlaying) { 
+            audioRef.current.pause()
+            // switch state to opposite of current boolean
+            setIsPlaying(!isPlaying)
+        }
+        // else play it if its not playing
+        else{
+            audioRef.current.play()
+            // switch state to opposite of current boolean
+            setIsPlaying(!isPlaying)
+        }
     }
  
     return(
