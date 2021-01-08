@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useRef} from "react";
 // brings in font awsome component
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // grabs the fonts we want to use 
 import {faPlay, faAngleLeft,faAngleRight} from "@fortawesome/free-solid-svg-icons"
 
-const Player = () => {
+const Player = ({currentSong}) => {
+    // useRef selects a specific html tag like querySelector in js does
+    const audioRef = useRef(null)
 
+    // Event Handlers
+    const playSongHandler = () => {
+        audioRef.current.play()
+    }
+ 
     return(
         <div className="player">
             <div className="time-control">
@@ -16,9 +23,10 @@ const Player = () => {
             <div className="play-control">
                 {/*  icon= font from the fontAwsome component */}
                 <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
-                <FontAwesomeIcon className="play" size="2x" icon={faPlay} />
+                <FontAwesomeIcon onClick={playSongHandler} className="play" size="2x" icon={faPlay} />
                 <FontAwesomeIcon className="skip-forward" size="2x" icon={faAngleRight} />
             </div>
+            <audio ref={audioRef} src={currentSong.audio}></audio>
         </div>
     )
 
