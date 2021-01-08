@@ -4,6 +4,5 @@
 #### -Is responsive
 #### -React Sass
 #### -Is useRef
-#### -Is chillHop
 #### https://chillhop.com/
 
